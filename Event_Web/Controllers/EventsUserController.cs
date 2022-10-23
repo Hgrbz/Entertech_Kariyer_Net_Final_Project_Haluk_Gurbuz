@@ -17,6 +17,7 @@ namespace Event_Web.Controllers
 {
     public class EventsUserController : BaseController//GenericRepository<Event>
     {
+        
         private readonly IEventService _eventService;
         private readonly Kariyer_ProjeContext _context;
         //Event_WebUser event_WebUser;
@@ -27,11 +28,11 @@ namespace Event_Web.Controllers
         }
 
         // GET: Events
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
                     var kariyer_ProjeContext = _context.Events.Where(u => u.UserId==User.FindFirstValue(ClaimTypes.NameIdentifier)).Include(u => u.Category).Include(u => u.City);
 
-            List<Event> listAllEmployees = await _eventService.GetAllEvents();
+            var listAllEmployees =  _eventService.GetAllEventsGeneric().Where(u => u.UserId==User.FindFirstValue(ClaimTypes.NameIdentifier)).Include(u => u.Category).Include(u => u.City);
             return View(listAllEmployees);
             //var kariyer_ProjeContext = _context.Events.Include(u => u.Category).Include(u => u.City);
             //return View(await kariyer_ProjeContext.ToListAsync());

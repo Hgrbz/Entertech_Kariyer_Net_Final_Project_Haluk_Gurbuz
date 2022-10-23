@@ -12,7 +12,7 @@ namespace Event_DAL.Repositories.Abstract
     {
         Task<TModel> GetGeneric(Expression<Func<TModel, bool>> filter);
 
-        Task<List<TModel>> GetAllEventsGeneric();
+        IQueryable<TModel> GetAllEventsGeneric();
         Task<TModel> CreateEventGeneric(TModel addEvent);
 
         Task<TModel> EditEventGeneric(TModel editEvent);

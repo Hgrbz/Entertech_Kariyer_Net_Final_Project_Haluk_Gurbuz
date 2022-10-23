@@ -33,19 +33,23 @@ namespace Event_DAL.Repositories.Concrete
                 throw;
             }
         }
-        public async Task<List<TModel>> GetAllEventsGeneric()
+        public IQueryable<TModel> GetAllEventsGeneric()
         {
             var kariyer_ProjeContext = _dbcontext.Events.Include(u => u.Category).Include(u => u.City);
 
             try
             {
-                return await _dbcontext.Set<TModel>().ToListAsync();
+                return  _dbcontext.Set<TModel>().AsNoTracking();
             }
             catch
             {
                 throw;
             }
         }
+        //public async Task<TModel> GetAllEventsGeneric()
+        //{
+            
+        //}
         public async Task<TModel> CreateEventGeneric(TModel addEvent)
         {
             _dbcontext.Set<TModel>().Add(addEvent);
@@ -73,5 +77,7 @@ namespace Event_DAL.Repositories.Concrete
                 throw new ArgumentException("Could not delete.");
             }
         }
+
+       
     }
 }

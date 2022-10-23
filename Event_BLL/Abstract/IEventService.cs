@@ -12,7 +12,7 @@ namespace Event_BLL.Abstract
     public interface IEventService:IGenericRepository<Event>
     {
         Task<Event> GetEvent(int eventId);
-        Task<List<Event>> GetAllEvents();
+        Event GetAllEvents();
         Task<Event> CreateEvent(Event addEvent);
         Task<Event> UpdateEvent(Event updateEvent);
         Task<bool> DeleteEvent(int eventId);

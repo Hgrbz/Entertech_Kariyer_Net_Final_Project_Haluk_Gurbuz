@@ -12,11 +12,11 @@ namespace Event_Web.Controllers
         {
             _eventService = eventService;
         }
-        public async Task<IActionResult> ShowEmployees()
-        {
-            List<Event> listAllEmployees = await _eventService.GetAllEvents();
-            return View(listAllEmployees);
-        }
+        //public async Task<IActionResult> ShowEmployees()
+        //{
+        //    List<Event> listAllEmployees = await _eventService.GetAllEvents();
+        //    return View(listAllEmployees);
+        //}
       
     }
 }

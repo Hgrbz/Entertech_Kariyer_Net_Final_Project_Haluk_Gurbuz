@@ -29,7 +29,7 @@ namespace Event_Web.Controllers
         public async Task<IActionResult> Index()
         {
 
-            List<Event> listAllEmployees = await _eventService.GetAllEvents();
+            var listAllEmployees = _eventService.GetAllEventsGeneric();
             return View(listAllEmployees);
             //var kariyer_ProjeContext = _context.Events.Include(u => u.Category).Include(u => u.City);
             //return View(await kariyer_ProjeContext.ToListAsync());

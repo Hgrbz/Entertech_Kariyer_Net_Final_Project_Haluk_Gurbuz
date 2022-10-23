@@ -17,7 +17,7 @@ namespace Event_BLL.Concrete
     public class EventService : GenericRepository<Event>, IEventService//,ControllerBase
     {
         //private readonly IGenericRepository<Event> _repository;
-        Kariyer_ProjeContext _context;
+        
         public EventService(/*IGenericRepository<Event> repository*/ Kariyer_ProjeContext context):base(context)
         {
             //_repository = repository;
@@ -28,13 +28,13 @@ namespace Event_BLL.Concrete
             return await GetGeneric(z=>z.EventId==eventId);
         }
 
-        public new async Task<List<Event>> GetAllEvents()
+        public Event GetAllEvents()
         {
-            var kariyer_ProjeContext = _context.Events.Where(u => u.UserId==User.FindFirstValue(ClaimTypes.NameIdentifier)).Include(u => u.Category).Include(u => u.City);
+            //var kariyer_ProjeContext = _context.Events.Where(u => u.UserId==User.FindFirstValue(ClaimTypes.NameIdentifier)).Include(u => u.Category).Include(u => u.City);
 
             try
             {
-                return await GetAllEventsGeneric().Where(u => u.UserId==User.FindFirstValue(ClaimTypes.NameIdentifier));
+                return (Event)GetAllEventsGeneric().Where(u => u.UserId==User.FindFirstValue(ClaimTypes.NameIdentifier));
             }
             catch
             {

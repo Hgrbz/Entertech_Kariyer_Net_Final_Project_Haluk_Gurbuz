@@ -18,11 +18,11 @@ namespace Event_Web.Controllers
             _context= context;
         }
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> ShowEmployees()
-        {
-            List<Event> listAllEmployees = await _eventService.GetAllEvents();
-            return View(listAllEmployees);
-        }
+        //public async Task<IActionResult> ShowEmployees()
+        //{
+        //    List<Event> listAllEmployees = await _eventService.GetAllEvents();
+        //    return View(listAllEmployees);
+        //}
         [HttpGet]
         public async Task<IActionResult> Create()
         {
